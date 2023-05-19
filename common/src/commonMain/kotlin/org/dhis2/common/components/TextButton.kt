@@ -35,8 +35,6 @@ fun Dhis2TextButton(
     }
 }
 
-/*
-@Preview
 @Composable
 fun Dhis2TextButtonPreview() {
     Dhis2TextButton(
@@ -47,4 +45,4 @@ fun Dhis2TextButtonPreview() {
             Icon(imageVector = Icons.Default.Add, contentDescription = "")
         }
     )
-}*/
+}
