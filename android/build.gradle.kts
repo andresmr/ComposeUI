@@ -9,22 +9,22 @@ group = "org.dhis2"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
     implementation(project(":common"))
-    implementation("androidx.activity:activity-compose:1.5.0")
+    implementation("androidx.activity:activity-compose:1.7.1")
     implementation ("com.airbnb.android:showkase:1.0.0-beta18")
     kapt ("com.airbnb.android:showkase-processor:1.0.0-beta18")
 }
 
 android {
-    compileSdkVersion(33)
+    compileSdk = 33
     defaultConfig {
         applicationId = "org.dhis2.android"
-        minSdkVersion(24)
-        targetSdkVersion(33)
+        minSdk = 24
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0-SNAPSHOT"
     }
