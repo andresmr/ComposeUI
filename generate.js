@@ -77,7 +77,7 @@ const promises = components.map(async (component) => {
     return generateStories({
         category: pascalCase(component.name),
         filePath: `./stories/${component.name}.stories.jsx`,
-        apiKey: "hg5wd3brc4aqf5pn7dgsaf6xy4",
+        apiKey: "3vdhdfwzxdfrixry2hfaujvldq",
         platform: "android",
         stories: [
             {

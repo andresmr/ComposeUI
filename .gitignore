@@ -39,3 +39,8 @@ bin/
 .DS_Store
 
 local.properties
+
+### Storybook generated files ###
+storybook-static
+node_modules
+stories
