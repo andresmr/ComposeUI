@@ -1,39 +1,22 @@
 package org.dhis2.common
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import org.dhis2.common.components.Components
 import org.dhis2.common.screens.ButtonScreen
+import org.dhis2.common.screens.HomeScreen
 
 @Composable
 fun App() {
-    var screen by remember { mutableStateOf(Components.HOME) }
-    loadScreen(screen)
-}
+    val currentScreen = remember { mutableStateOf(Components.HOME)}
 
-@Composable
-fun loadScreen(screen: Components) {
-    return when (screen) {
-        Components.BUTTON -> ButtonScreen()
-        else -> HomeScreen()
+    MaterialTheme {
+        when(currentScreen.value) {
+            Components.BUTTON -> ButtonScreen()
+            else -> HomeScreen { currentScreen.value = it }
+        }
     }
 }
 
-@Composable
-fun HomeScreen() {
-    Column(modifier = Modifier.padding(10.dp)) {
-        Button(
-            modifier = Modifier.fillMaxWidth(),
-            content = { Text(text = "Buttons") },
-            onClick = {
-
-            },
-        )
-    }
-}

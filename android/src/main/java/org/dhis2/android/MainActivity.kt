@@ -30,9 +30,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme {
-                App()
-            }
+            App()
         }
         intent.data?.getQueryParameter(QUERY_COMPONENT)?.let {
             handleIntent(it)
