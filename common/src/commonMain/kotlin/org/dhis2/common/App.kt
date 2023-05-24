@@ -1,26 +1,39 @@
 package org.dhis2.common
 
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import org.dhis2.common.components.Dhis2TextButton
-import org.dhis2.common.models.ButtonUiModel
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import org.dhis2.common.components.Components
+import org.dhis2.common.screens.ButtonScreen
 
 @Composable
 fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
-    val platformName = getPlatformName()
+    var screen by remember { mutableStateOf(Components.HOME) }
+    loadScreen(screen)
+}
 
-    Dhis2TextButton(
-        model = ButtonUiModel(
-            text = text,
+@Composable
+fun loadScreen(screen: Components) {
+    return when (screen) {
+        Components.BUTTON -> ButtonScreen()
+        else -> HomeScreen()
+    }
+}
+
+@Composable
+fun HomeScreen() {
+    Column(modifier = Modifier.padding(10.dp)) {
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            content = { Text(text = "Buttons") },
             onClick = {
-                text = "Hello, $platformName"
-            }
-        ),
-        leadingIcon = {
-            Icon(imageVector = Icons.Default.Add, contentDescription = "")
-        }
-    )
+
+            },
+        )
+    }
 }
