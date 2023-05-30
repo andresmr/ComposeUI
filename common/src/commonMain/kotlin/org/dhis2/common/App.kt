@@ -1,26 +1,22 @@
 package org.dhis2.common
 
-import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.runtime.*
-import org.dhis2.common.components.Dhis2TextButton
-import org.dhis2.common.models.ButtonUiModel
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import org.dhis2.common.components.Components
+import org.dhis2.common.screens.ButtonScreen
+import org.dhis2.common.screens.HomeScreen
 
 @Composable
 fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
-    val platformName = getPlatformName()
+    val currentScreen = remember { mutableStateOf(Components.HOME)}
 
-    Dhis2TextButton(
-        model = ButtonUiModel(
-            text = text,
-            onClick = {
-                text = "Hello, $platformName"
-            }
-        ),
-        leadingIcon = {
-            Icon(imageVector = Icons.Default.Add, contentDescription = "")
+    MaterialTheme {
+        when(currentScreen.value) {
+            Components.BUTTON -> ButtonScreen()
+            else -> HomeScreen { currentScreen.value = it }
         }
-    )
+    }
 }
+

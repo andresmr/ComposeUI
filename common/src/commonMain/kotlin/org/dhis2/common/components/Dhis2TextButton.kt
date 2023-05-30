@@ -2,46 +2,46 @@ package org.dhis2.common.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.dhis2.common.models.ButtonUiModel
 
 @Composable
-fun Dhis2Button(
+fun Dhis2TextButton(
     modifier: Modifier = Modifier,
-    model: ButtonUiModel,
-    leadingIcon: @Composable (() -> Unit)? = null
+    leadingIcon: @Composable (() -> Unit)? = null,
+    text: String,
+    enabled: Boolean = true,
+    onClick: () -> Unit
 ) {
-    Button(
+    TextButton(
         modifier = modifier,
-        onClick = model.onClick
+        onClick = onClick,
+        enabled = enabled
     ) {
         leadingIcon?.let {
             it.invoke()
             Spacer(modifier = Modifier.size(8.dp))
         }
         Text(
-            text = model.text,
+            text = text,
             fontSize = 12.sp
         )
     }
 }
 
 @Composable
-fun SimpleButtonPreview() {
-    Dhis2Button(
-        model = ButtonUiModel(
-            text = "Action"
-        ) {},
+fun Dhis2TextButtonPreview() {
+    Dhis2TextButton(
         leadingIcon = {
             Icon(imageVector = Icons.Default.Add, contentDescription = "")
-        }
-    )
+        },
+        text = "Dhis2TextButtonPreview"
+    ) {}
 }
